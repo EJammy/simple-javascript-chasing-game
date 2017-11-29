@@ -2,10 +2,8 @@ var gameArea = document.getElementById("gameArea");
 var ctx = gameArea.getContext("2d");
 //for position of mouse
 var border = gameArea.getBoundingClientRect();
-var action = false;
-var pos = 0;
+var pos = {x: 100, y:100};
 var i = 0;
-var lose = true;
 
 var run = setInterval(update, 10)
 
@@ -20,10 +18,16 @@ function update(){
 
     //losing
     if (enemy.x < player.x + 30 && player.x < enemy.x + 30 &&
-      enemy.y < player.y + 30 && player.y < enemy.y + 30 && lose)
+      enemy.y < player.y + 30 && player.y < enemy.y + 30)
       {
       window.alert("your score:" + i);
-      lose = false;
+      i = 0;
+      player.x = 100;
+      player.y = 100;
+      enemy.x = 100;
+      enemy.y = 100;
+      pos = {x: 100, y:100};
+
     }
   }
   i += 1;
